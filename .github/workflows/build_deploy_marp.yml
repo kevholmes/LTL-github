@@ -16,6 +16,8 @@ jobs:
       - name: install marp-cli via NPM
         run: |
           npm install -g @marp-team/marp-cli@${{ env.MARP_CLI_VER }}
+      - name: Check out source code
+        uses: actions/checkout@v2
       - name: MARP-compile to index.html
         run: |
           marp ${{ env.MARP_ARGS }}
