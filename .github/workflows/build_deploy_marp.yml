@@ -29,10 +29,12 @@ jobs:
           git init && \
           git config user.name "marp-action" && \
           git config user.email "marp-action@users.noreply.github.com" && \
-          touch .nojekyll && \
           git add . && \
           git status && \
           curr_branch="$(git rev-parse --abbrev-ref HEAD)" && \
-          commit_msg="${COMMIT_MSG:-'Marp Action Build'}" && \
+          commit_msg="${COMMIT_MSG:-'Marp Actions Build'}" && \
           git commit -m "${commit_msg}"
           git push --force $remote_repo ${curr_branch}:${{ env.PUBLISH_TO_BRANCH}}
+      - name: Debug dir
+        run: |
+          ls -alh
