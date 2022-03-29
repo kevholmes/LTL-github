@@ -29,6 +29,7 @@ jobs:
           git init && \
           git config user.name "marp-action" && \
           git config user.email "marp-action@users.noreply.github.com" && \
+          touch .nojekyll && \
           git add . && \
           git status && \
           curr_branch="$(git rev-parse --abbrev-ref HEAD)" && \
