@@ -21,7 +21,7 @@ jobs:
       - name: MARP-compile to index.html
         run: |
           marp ${{ env.MARP_ARGS }}
-      - name: Deploy to GitHub Pages
+      - name: Deploy MARP'd index.html to GitHub Pages
         run: |
           printf "Publishing to ${{ github.repository }} ${{ env.PUBLISH_TO_BRANCH}}...\n"
           printf "\n"
