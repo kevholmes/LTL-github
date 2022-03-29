@@ -22,6 +22,7 @@ jobs:
         run: |
           marp ${{ env.MARP_ARGS }}
       - name: Deploy to GitHub Pages
+        continue-on-error: true
         run: |
           printf "Publishing to ${{ github.repository }} ${{ env.PUBLISH_TO_BRANCH}}...\n"
           printf "\n"
