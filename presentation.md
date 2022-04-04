@@ -145,3 +145,63 @@ This is generally considered a lot of money.
 * Require certain "Checks" (Actions) to pass
 * Restruct who can push to branches that match selector string ie only Release can push to `release/*`
 
+---
+
+# **Internal repos**
+
+* Create `internal` type repositories within your Organization to store reusable Actions workflows
+* Acts as "innersource" for sharing with other Teams within Org
+* Store things like Dockerfiles, CI/CD workflows in these repos for re-use
+
+---
+
+# **Create a mock "ideal" repo**
+
+* Create a mock repo showing users how to get started
+  * Include fully functional CI/CD Actions that deploy a mocked out service/stack
+  * Run these mocks on a schedule rather than event (merge) to act as a canary to detect upstream issues before product teams
+  * Answer less questions about how to implement, bring feedback into mock repo as singuar source of knowledge as Org improves
+
+---
+
+# **GITHUB_TOKEN**
+
+* Auto-generated, ephemeral secret token provided by GitHub
+* Do cool things with Actions with near-zero setup
+  * Upon merge to `main` we'll generate and upload a new swagger doc to repo's GitHub Pages!
+* It doesn't allow you to interact with *other* repos
+  * You can't check `repo A` out from an Action running in `repo B` unless `repo A` is publicly readable to world
+* Ability to limit scope more (ex: read only)
+
+---
+
+# **Secrets**
+
+* Internal Key/Value store built into GitHub Orgs/Projects
+* Enterprise/Org can create "Org-level" secrets akin to a Global variable
+  * Easy to misuse and create overly permissive scenario
+* Bot accounts scoped to a purpose/role
+  * Issue each RBAC'd bot a Personal Access Token (PAT) + way to rotate
+
+---
+
+![bg center:20% 70%](./github_token_issues.svg)
+
+---
+
+# **Secrets Gotchas**
+
+* Consider using Secrets only as way to bootstrap a Vault/SSM params integration
+* Secrets have a special `type` within Actions input/outputs
+  * Auto-obfuscated to prevent leaks, defeat with a bash one-liner to insert spaces between chars when printing to stdio/log
+  * Secrets cannot (currently) be used as an `Output` from a Reusable Action
+  * Javascript-based Actions can pass secrets out
+
+---
+
+# **Improve Security**
+
+* Enable beta feature if available for your projects/Org to scan repos for secrets
+* Create or utilize existing tools to audit your repos to ensure they are private / internal / public
+* Enable MFA if you can
+* Create a lifecycle for old repos, or just delete them
