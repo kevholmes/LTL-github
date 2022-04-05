@@ -242,3 +242,45 @@ on small to large open source projects
 * Create or utilize existing tools to audit your repos to ensure they are private / internal / public
 * Enable MFA if you can
 * Create a lifecycle for old repos, or just delete them
+
+---
+
+# **Actions**
+
+Common Examples:
+
+* Build and deploy static content to GitHub Pages
+* Build app, pkg into container, store in repo
+* Build ephemeral env, run smoke tests, destroy
+
+Drive em by event or schedule
+
+---
+
+Compile static site and deploy to GitHub Pages
+
+---
+
+![bg 80%](./marp_example.png)
+
+---
+
+Build app and deploy to GHCR.io
+(GitHub Container Repo)
+
+---
+
+![bg 80%](./ghcr_example.png)
+
+---
+
+GKE Autopilot
+Deploy App
+Run Postman tests
+Destroy
+
+---
+
+![bg 80%](./build_deploy_test.png)
+
+---
