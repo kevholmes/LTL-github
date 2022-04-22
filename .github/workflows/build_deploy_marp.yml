@@ -5,7 +5,7 @@ on:
     branches: [main]
 
 env:
-  MARP_CLI_VER: 1.4.0
+  MARP_CLI_VER: 1.7.0
   MARP_ARGS: presentation.md -o index.html
   PUBLISH_TO_BRANCH: gh-pages
 
